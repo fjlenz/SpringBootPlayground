@@ -1,0 +1,13 @@
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      base-path: "/"
+info:
+  name: SpringBootPlayground
+  info.version: 0.0.1-SNAPSHOT
+  info.servedBy: ${HOSTNAME}
+ 

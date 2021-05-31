@@ -1,0 +1,60 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: springbootplayground-route
+  namespace: fjlenz-dev
+  uid: 93d365aa-89fd-4f0e-8e2d-97a3d8f42e85
+  resourceVersion: '86081664'
+  creationTimestamp: '2021-05-28T20:07:14Z'
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2021-05-28T20:07:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:tls':
+            .: {}
+            'f:termination': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2021-05-28T20:07:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+spec:
+  host: >-
+    springbootplayground-route-fjlenz-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+  to:
+    kind: Service
+    name: springbootplayground
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        springbootplayground-route-fjlenz-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2021-05-28T20:07:14Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.sandbox-m2.ll9k.p1.openshiftapps.com

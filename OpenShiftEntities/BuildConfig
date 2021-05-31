@@ -1,0 +1,61 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: springbootplayground
+  namespace: fjlenz-dev
+  uid: 06623292-ad16-42ab-a754-19e7ac986b8d
+  resourceVersion: '86069817'
+  generation: 7
+  creationTimestamp: '2021-05-28T19:43:50Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2021-05-28T19:43:50Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:output':
+            'f:to':
+              .: {}
+              'f:kind': {}
+              'f:name': {}
+          'f:runPolicy': {}
+          'f:source':
+            'f:git':
+              .: {}
+              'f:ref': {}
+              'f:uri': {}
+            'f:type': {}
+          'f:strategy':
+            'f:dockerStrategy': {}
+            'f:type': {}
+    - manager: openshift-apiserver
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2021-05-28T19:43:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:lastVersion': {}
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'springbootplayground:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy: {}
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/fjlenz/SpringBootPlayground.git'
+      ref: main
+  runPolicy: Serial
+status:
+  lastVersion: 3

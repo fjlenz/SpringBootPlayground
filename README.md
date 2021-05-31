@@ -1,0 +1,14 @@
+# SpringBootPlayground - To Do:
+- [x] setup github & and spring initalizr project
+- [ ] add get/post/put/patch controller / DTO / Service / mapper / entity
+- [ ] use JPA for GET/POST database items (H2 database)
+- [x] use logstash for logging to elk stack
+- [ ] setup CI/CD pipeline (Jenkins, TC, ..?)
+- [ ] setup Docker deployment (prepare Docker File that does mvn clean innstall inside Docker build process, Travis?, Firebase?, heroku.com?)
+- [ ] add authentication to REST endpoints (basic auth)
+- [ ] Read user from ?some? JWT Token
+- [ ] write Unit Test
+- [ ] define REST Service via OpenAPI 3.0 (editor.swagger.io)
+- [ ] call service as consumer (rest template, generate  client source via swagger)
+- [ ] run helm deployment
+- [ ] mvn: run with certain profile
