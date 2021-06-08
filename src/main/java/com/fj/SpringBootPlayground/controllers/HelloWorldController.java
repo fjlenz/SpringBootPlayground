@@ -3,6 +3,7 @@ package com.fj.SpringBootPlayground.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.slf4j.LoggerFactory;
+
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class HelloWorldController {
-
+	
 	Logger logger = LoggerFactory.getLogger("jsonConsoleAppender");
-
+    
 	@GetMapping(value = "/hello")
     public ResponseEntity<String> hello(@RequestParam String name) {
 
@@ -26,5 +27,6 @@ public class HelloWorldController {
 			logger.info("This is the response: '{}'", name);
 			return new ResponseEntity<>(validatedName, HttpStatus.OK);			
 		}
-    }    
+    }
+	
 }

@@ -11,3 +11,16 @@ info:
   info.version: @project.version@
   info.servedBy: ${HOSTNAME}
  
+#Database Configuration
+#port forwarding to opensift: $ ./oc port-forward mariadb-1-jd5s9 27019:3306
+spring:
+  datasource:
+#Running Locally
+#    url: jdbc:mariadb://localhost:27019/sampledb
+    url: jdbc:mariadb://172.30.43.208:3306/sampledb
+    username: user8XW
+    password: m5x38MldrecE3yOA
+    driver: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    
