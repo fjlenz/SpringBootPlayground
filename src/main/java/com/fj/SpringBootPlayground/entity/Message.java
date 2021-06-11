@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Message {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name="msg_text")

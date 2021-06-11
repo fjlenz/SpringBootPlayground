@@ -8,15 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fj.SpringBootPlayground.entity.Message;
+import com.fj.SpringBootPlayground.mapper.MessageMapper;
+import com.fj.SpringBootPlayground.model.MessageModel;
 import com.fj.SpringBootPlayground.repository.MessageRepository;
-
 
 @Service
 public class MessageServiceImpl implements MessageService{
 
 	@Autowired
     private MessageRepository messageRepository;
-/*
+
+	private MessageMapper transactionMapper = new MessageMapper(); 
+	
+	/*
 	@Override
 	public Message findSingleMessagebyText(String transasearchTerm) {
 		// TODO Auto-generated method stub
@@ -25,14 +29,11 @@ public class MessageServiceImpl implements MessageService{
 
 
 	@Override
-	public List<Message> retrieveAllMessages() {
-		// TODO Auto-generated method stub
-		
-	    List<Message> messagesFound = new ArrayList<Message>();
+	public List<MessageModel> retrieveAllMessages() {
+	    List<MessageModel> messagesFound = new ArrayList<MessageModel>();
 	    
-	    for (Message m : messageRepository.findAll()) {
-	    	//TODO: Create Mapper class that maps Entity to DTO
-	    	messagesFound.add(m);
+	    for (Message m : messageRepository.findAll()) {	    	
+	    	messagesFound.add(transactionMapper.mapEntityToDto(m));
 	    }
 	    
 		return messagesFound;
@@ -40,9 +41,24 @@ public class MessageServiceImpl implements MessageService{
 
 
 	@Override
-	public Optional<Message> retrieveSingleMessage(int id) {
-		// TODO Auto-generated method stub
-		return messageRepository.findById(id);
+	public MessageModel retrieveSingleMessage(int id) {
+		Optional<Message> foundMessage = messageRepository.findById(id);
+	
+		if (foundMessage.isPresent()) {
+			return transactionMapper.mapEntityToDto(foundMessage.get());
+		} else {
+			return null;
+		}	
+	}
+	
+
+	@Override
+	public MessageModel addSingleMessage(MessageModel messageModel, boolean mapForInsert) {
+
+		Message messageForPersist = transactionMapper.mapDtoToEntity(messageModel, mapForInsert);
+		Message savedMesage = messageRepository.save(messageForPersist);
+
+		return transactionMapper.mapEntityToDto(savedMesage);
 	}
 
 }
