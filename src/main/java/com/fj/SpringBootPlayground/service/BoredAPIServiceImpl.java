@@ -5,8 +5,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fj.SpringBootPlayground.model.ActivityModel;
 
-import reactor.core.publisher.Mono;
-
 
 @Service
 public class BoredAPIServiceImpl implements BoredAPIService{
