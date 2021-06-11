@@ -21,13 +21,14 @@ public class CallSomeAPIController {
 	
 	Logger logger = LoggerFactory.getLogger("jsonConsoleAppender");
     
-	@GetMapping(value = "/call")
+	@GetMapping(value = "/boredactivity")
     public ResponseEntity<ActivityModel> callSomeNonAuthAPI() {
 
 		ActivityModel boredActivity = boredService.retrieveActivity();
 		
-		logger.info("what I did get from BoredAPI:  '{}'", boredActivity);
+		logger.info("What I did get from BoredAPI:  '{}'", boredActivity.getActivity());
 		return new ResponseEntity<>(boredActivity, HttpStatus.OK);			
     }
 	
 }
+

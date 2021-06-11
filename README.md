@@ -10,6 +10,6 @@
 - [ ] Read user from JWT Token
 - [ ] write Unit Test
 - [ ] define REST Service via OpenAPI 3.0 (editor.swagger.io)
-- [ ] call service as consumer (rest template, generate  client source via swagger) - https://www.boredapi.com
+- [x] call service as consumer (WebClient) - https://www.boredapi.com
 - [ ] run helm deployment
 - [ ] mvn: run with certain profile
