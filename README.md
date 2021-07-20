@@ -13,3 +13,4 @@
 - [x] call service as consumer (WebClient) - https://www.boredapi.com
 - [ ] run helm deployment
 - [ ] mvn: run with certain profile
+- [ ] use github actions to deploy to DigitalOcean
