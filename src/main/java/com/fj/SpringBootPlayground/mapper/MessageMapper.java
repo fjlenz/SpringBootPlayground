@@ -7,7 +7,7 @@ public class MessageMapper {
 
 	public Message mapDtoToEntity (MessageModel messageModel, boolean mapForInsert) {
 
-		Message mappedMessageEntity = new Message();
+		Message mappedMessageEntity = new Message(0, "unknown");
 		if (!mapForInsert) {
 			mappedMessageEntity.setId(messageModel.getId());	
 		}
