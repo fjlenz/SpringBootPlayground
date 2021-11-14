@@ -8,6 +8,7 @@ import com.fj.SpringBootPlayground.service.MessageService;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,12 @@ public class MessageController {
 	
 	@GetMapping(value = "/messages")
     public ResponseEntity<List<MessageModel>> getAllMessages() {
+		
+		try {
+		    TimeUnit.SECONDS.sleep(4); // this is the delay - to view Angular Loading Spinner a little longer
+		} catch (InterruptedException ie) {
+		    Thread.currentThread().interrupt();
+		}
 		
 		return new ResponseEntity<>(messageService.retrieveAllMessages(), HttpStatus.OK);	
     }

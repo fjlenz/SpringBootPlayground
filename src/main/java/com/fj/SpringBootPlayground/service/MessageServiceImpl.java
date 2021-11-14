@@ -16,6 +16,11 @@ public class MessageServiceImpl implements MessageService{
 	private static List<Message> messagesRepo = new ArrayList<>(){{
 		add(new Message(1, "Message number 1"));
 		add(new Message(2, "Message number 2"));
+		add(new Message(9, "Message number 9"));
+		add(new Message(10, "Message number 10"));
+		add(new Message(11, "Message number 11"));
+		add(new Message(34, "Message number 34"));
+		add(new Message(56, "Message number 56"));
 	}};
 	
 	private MessageMapper transactionMapper = new MessageMapper(); 
@@ -32,11 +37,10 @@ public class MessageServiceImpl implements MessageService{
 	public List<MessageModel> retrieveAllMessages() {
 		List<MessageModel> messagesFound  = new ArrayList<MessageModel>();
 		
-		System.out.println("service: retrieveAllMessages" + messagesRepo.size());
+		System.out.println("Service: retrieveAllMessages: " + messagesRepo.size());
 		
 	    for (Message m : messagesRepo) {	    	
 	    	messagesFound.add(transactionMapper.mapEntityToDto(m));
-			System.out.println("loop");
 	    }
 	    
 		return messagesFound;
