@@ -17,11 +17,12 @@
 
 
 # Connect to mySQL on GCP
-- gcloud sql connect fj-mysql-db --user=root --quiet
+- gcloud sql connect fj-mysql-db --user=root --quiet (connect to database via local Terminal or inside GCP console "cloud shell")
 - SHOW DATABASES;
 - USE messageDB;
 - CREATE TABLE msg_message (id int NOT NULL, msg_text varchar(255));
 - SHOW TABLES;
 - INSERT INTO msg_message values ("1", "First messagge text");
 - Select * from msg_message;
+
 
