@@ -1,16 +1,19 @@
 package com.fj.SpringBootPlayground.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "msg_message")
+
 public class Message {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name="msg_text")
     private String text;
 	
-    public Message(Integer id,String text){  
-        this.id = id;
-        this.text = text;
-        }  
-    
     public Integer getId() {
 		return id;
 	}

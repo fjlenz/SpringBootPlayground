@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class MessageController {
@@ -50,10 +51,10 @@ public class MessageController {
 	}
 	
 	@GetMapping(value = "/messages")
-    public ResponseEntity<List<MessageModel>> getAllMessages() {
+    public ResponseEntity<List<MessageModel>> getAllMessages(@RequestParam(required = false, defaultValue = "0") int delaySeconds) {
 		
 		try {
-		    TimeUnit.SECONDS.sleep(4); // this is the delay - to view Angular Loading Spinner a little longer
+		    TimeUnit.SECONDS.sleep(delaySeconds); // this is the delay - to view Angular Loading Spinner a little longer
 		} catch (InterruptedException ie) {
 		    Thread.currentThread().interrupt();
 		}

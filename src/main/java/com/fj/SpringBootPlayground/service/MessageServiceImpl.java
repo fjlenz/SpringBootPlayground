@@ -2,27 +2,22 @@ package com.fj.SpringBootPlayground.service;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Optional;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fj.SpringBootPlayground.entity.Message;
 import com.fj.SpringBootPlayground.mapper.MessageMapper;
 import com.fj.SpringBootPlayground.model.MessageModel;
+import com.fj.SpringBootPlayground.repository.MessageRepository;
 
 @Service
 public class MessageServiceImpl implements MessageService{
 
-	private static List<Message> messagesRepo = new ArrayList<>(){{
-		add(new Message(1, "Message number 1"));
-		add(new Message(2, "Message number 2"));
-		add(new Message(9, "Message number 9"));
-		add(new Message(10, "Message number 10"));
-		add(new Message(11, "Message number 11"));
-		add(new Message(34, "Message number 34"));
-		add(new Message(56, "Message number 56"));
-	}};
-	
+	@Autowired
+    private MessageRepository messageRepository;
+
 	private MessageMapper transactionMapper = new MessageMapper(); 
 	
 	/*
@@ -35,11 +30,9 @@ public class MessageServiceImpl implements MessageService{
 
 	@Override
 	public List<MessageModel> retrieveAllMessages() {
-		List<MessageModel> messagesFound  = new ArrayList<MessageModel>();
-		
-		System.out.println("Service: retrieveAllMessages: " + messagesRepo.size());
-		
-	    for (Message m : messagesRepo) {	    	
+	    List<MessageModel> messagesFound = new ArrayList<MessageModel>();
+	    
+	    for (Message m : messageRepository.findAll()) {	    	
 	    	messagesFound.add(transactionMapper.mapEntityToDto(m));
 	    }
 	    
@@ -49,16 +42,13 @@ public class MessageServiceImpl implements MessageService{
 
 	@Override
 	public MessageModel retrieveSingleMessage(int id) {
-		//Optional<Message> foundMessage = messagesRepo. .foundMessage ..;
+		Optional<Message> foundMessage = messageRepository.findById(id);
 	
-		/*
 		if (foundMessage.isPresent()) {
 			return transactionMapper.mapEntityToDto(foundMessage.get());
 		} else {
 			return null;
 		}	
-		*/
-		return null;
 	}
 	
 
@@ -66,10 +56,9 @@ public class MessageServiceImpl implements MessageService{
 	public MessageModel addSingleMessage(MessageModel messageModel, boolean mapForInsert) {
 
 		Message messageForPersist = transactionMapper.mapDtoToEntity(messageModel, mapForInsert);
-		messagesRepo.add(messageForPersist);
+		Message savedMesage = messageRepository.save(messageForPersist);
 
-		return transactionMapper.mapEntityToDto(messageForPersist);
+		return transactionMapper.mapEntityToDto(savedMesage);
 	}
 
 }
-

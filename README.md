@@ -25,4 +25,9 @@
 - INSERT INTO msg_message values ("1", "First messagge text");
 - Select * from msg_message;
 
+# Storing Secrets (like DataBase Password)
+- gcloud secrets list
+- echo -n "THISISTHEPASSWORD" | \
+  gcloud secrets create message-db-password --data-file=- --replication-policy=automatic
 
+  
