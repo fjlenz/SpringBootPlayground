@@ -14,3 +14,20 @@
 - [ ] run helm deployment
 - [ ] mvn: run with certain profile
 - [ ] use github actions to deploy to DigitalOcean
+
+
+# Connect to mySQL on GCP
+- gcloud sql connect fj-mysql-db --user=root --quiet (connect to database via local Terminal or inside GCP console "cloud shell")
+- SHOW DATABASES;
+- USE messageDB;
+- CREATE TABLE msg_message (id int NOT NULL, msg_text varchar(255));
+- SHOW TABLES;
+- INSERT INTO msg_message values ("1", "First messagge text");
+- Select * from msg_message;
+
+# Storing Secrets (like DataBase Password)
+- gcloud secrets list
+- echo -n "THISISTHEPASSWORD" | \
+  gcloud secrets create message-db-password --data-file=- --replication-policy=automatic
+
+  

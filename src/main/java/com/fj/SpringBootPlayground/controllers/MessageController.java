@@ -8,6 +8,7 @@ import com.fj.SpringBootPlayground.service.MessageService;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class MessageController {
@@ -49,7 +51,13 @@ public class MessageController {
 	}
 	
 	@GetMapping(value = "/messages")
-    public ResponseEntity<List<MessageModel>> getAllMessages() {
+    public ResponseEntity<List<MessageModel>> getAllMessages(@RequestParam(required = false, defaultValue = "0") int delaySeconds) {
+		
+		try {
+		    TimeUnit.SECONDS.sleep(delaySeconds); // this is the delay - to view Angular Loading Spinner a little longer
+		} catch (InterruptedException ie) {
+		    Thread.currentThread().interrupt();
+		}
 		
 		return new ResponseEntity<>(messageService.retrieveAllMessages(), HttpStatus.OK);	
     }
