@@ -56,9 +56,31 @@ public class MessageServiceImpl implements MessageService{
 	public MessageModel addSingleMessage(MessageModel messageModel, boolean mapForInsert) {
 
 		Message messageForPersist = transactionMapper.mapDtoToEntity(messageModel, mapForInsert);
+		
 		Message savedMesage = messageRepository.save(messageForPersist);
-
+		
 		return transactionMapper.mapEntityToDto(savedMesage);
+	}
+
+
+	@Override
+	public MessageModel updateMessage(int id, MessageModel messageModel) {
+	
+		Optional<Message> foundMessage = messageRepository.findById(id);
+		
+		if (foundMessage.isPresent()) {
+			Message messageForUpdate = foundMessage.get();
+			
+			messageForUpdate.setText(messageModel.getMessage());
+			
+			Message savedMesage = messageRepository.save(messageForUpdate);
+			
+			return transactionMapper.mapEntityToDto(savedMesage);
+			
+		}
+		
+		return null;
+			
 	}
 
 }
