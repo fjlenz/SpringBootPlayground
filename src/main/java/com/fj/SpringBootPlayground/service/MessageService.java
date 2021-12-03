@@ -12,6 +12,8 @@ public interface MessageService {
 
 	public abstract MessageModel updateMessage(int id, MessageModel messageModel);
 
+	public abstract MessageModel deleteSingleMessage(int id);
+
 	public abstract List<MessageModel> retrieveAllMessages();
 	
 

@@ -83,4 +83,21 @@ public class MessageServiceImpl implements MessageService{
 			
 	}
 
+
+	@Override
+	public MessageModel deleteSingleMessage(int id) {
+		
+		Optional<Message> foundMessage = messageRepository.findById(id);
+		
+		if (foundMessage.isPresent()) {
+			Message messageForDelete = foundMessage.get();
+		
+			messageRepository.delete(messageForDelete);
+			
+			return transactionMapper.mapEntityToDto(messageForDelete);
+		}		
+
+		return null;
+	}
+
 }
