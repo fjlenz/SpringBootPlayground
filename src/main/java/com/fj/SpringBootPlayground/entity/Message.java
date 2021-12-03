@@ -1,24 +1,24 @@
 package com.fj.SpringBootPlayground.entity;
 
-import javax.persistence.*;
+import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
+import org.springframework.cloud.gcp.data.datastore.core.mapping.Field;
 
-@Entity
-@Table(name = "msg_message")
+import org.springframework.data.annotation.Id;
 
+@Entity(name = "msg_message")
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(name="msg_text")
+	@Field(name = "msg_text")
     private String text;
 	
-    public Integer getId() {
+    public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

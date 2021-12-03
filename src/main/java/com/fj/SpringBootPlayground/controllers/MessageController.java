@@ -43,7 +43,7 @@ public class MessageController {
     }
 	
 	@GetMapping("/message/{id}")
-	public ResponseEntity<MessageModel> getMessageById(@PathVariable int id) {
+	public ResponseEntity<MessageModel> getMessageById(@PathVariable Long id) {
 
 		MessageModel retrievedMessage = messageService.retrieveSingleMessage(id);
 		
@@ -66,7 +66,7 @@ public class MessageController {
 	
 	
 	@PutMapping("/message/{id}")
-	public ResponseEntity<MessageModel> updateMessage(@RequestBody MessageModel messageModel, @PathVariable int id) {
+	public ResponseEntity<MessageModel> updateMessage(@RequestBody MessageModel messageModel, @PathVariable Long id) {
 	    
 		MessageModel updatedMessage = messageService.updateMessage(id, messageModel);
 		
@@ -79,7 +79,7 @@ public class MessageController {
 	  }
 	
 	@DeleteMapping("/message/{id}")
-	public ResponseEntity<MessageModel> deleteMessage(@PathVariable int id) {
+	public ResponseEntity<MessageModel> deleteMessage(@PathVariable Long id) {
 	    
 		MessageModel deletedMessage = messageService.deleteSingleMessage(id);
 		

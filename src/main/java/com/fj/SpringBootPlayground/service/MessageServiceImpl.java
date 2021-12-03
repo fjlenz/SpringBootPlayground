@@ -41,7 +41,7 @@ public class MessageServiceImpl implements MessageService{
 
 
 	@Override
-	public MessageModel retrieveSingleMessage(int id) {
+	public MessageModel retrieveSingleMessage(Long id) {
 		Optional<Message> foundMessage = messageRepository.findById(id);
 	
 		if (foundMessage.isPresent()) {
@@ -64,7 +64,7 @@ public class MessageServiceImpl implements MessageService{
 
 
 	@Override
-	public MessageModel updateMessage(int id, MessageModel messageModel) {
+	public MessageModel updateMessage(Long id, MessageModel messageModel) {
 	
 		Optional<Message> foundMessage = messageRepository.findById(id);
 		
@@ -85,7 +85,7 @@ public class MessageServiceImpl implements MessageService{
 
 
 	@Override
-	public MessageModel deleteSingleMessage(int id) {
+	public MessageModel deleteSingleMessage(Long id) {
 		
 		Optional<Message> foundMessage = messageRepository.findById(id);
 		
@@ -99,5 +99,6 @@ public class MessageServiceImpl implements MessageService{
 
 		return null;
 	}
+
 
 }

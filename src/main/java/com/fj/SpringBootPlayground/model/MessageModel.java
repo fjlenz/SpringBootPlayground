@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MessageModel   {
 
 	@JsonProperty(value = "id", required = true)
-	private Integer id;
+	private Long id;
 
 	@JsonProperty(value = "message", required = true)
 	private String message = null;
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
