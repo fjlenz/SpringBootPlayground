@@ -12,7 +12,8 @@ public class MessageMapper {
 			mappedMessageEntity.setId(messageModel.getId());	
 		}
 		mappedMessageEntity.setText(messageModel.getMessage());
-				
+		mappedMessageEntity.setRating(messageModel.getRating());
+		
 		return mappedMessageEntity;
 	}
 	
@@ -21,6 +22,7 @@ public class MessageMapper {
 		MessageModel mappedMessageDto = new MessageModel();
 		mappedMessageDto.setId(foundMessage.getId());
 		mappedMessageDto.setMessage(foundMessage.getText());
+		mappedMessageDto.setRating(foundMessage.getRating());
 		
 		return mappedMessageDto;
 	}
