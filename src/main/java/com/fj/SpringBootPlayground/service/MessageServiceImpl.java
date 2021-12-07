@@ -72,6 +72,7 @@ public class MessageServiceImpl implements MessageService{
 			Message messageForUpdate = foundMessage.get();
 			
 			messageForUpdate.setText(messageModel.getMessage());
+			messageForUpdate.setRating(messageModel.getRating());
 			
 			Message savedMesage = messageRepository.save(messageForUpdate);
 			
